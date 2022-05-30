@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Quality Gate'){
             steps{
-                sleep(20)
+                sleep(5)
                 timeout(time:1, unit: 'MINUTES'){
                     waitForQualityGate abortPipeline: true
                 }                
@@ -36,8 +36,10 @@ pipeline{
         }
         stage('API Test'){
             steps{
-                git credentialsId: 'github_login', url: 'https://github.com/IsaqueGarcia/tasks-api-test'
-                bat 'mvn test'
+                dir('api-test') {
+                    git credentialsId: 'github_login', url: 'https://github.com/IsaqueGarcia/tasks-api-test'
+                    bat 'mvn test'
+                }
             }
         }
     }
