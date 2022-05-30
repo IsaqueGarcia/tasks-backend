@@ -63,6 +63,3 @@ pipeline{
 }
 
 
- 
-https://github.com/IsaqueGarcia/tasks-functional-tests
-
